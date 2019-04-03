@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string.h>
+#include<cmath>
+using namespace std;
+int main()
+{
+int arraysize;
+int groups=0;
+int element;
+cin>>arraysize;
+int a[arraysize]={};
+cin>>groups;
+for(int i=0;i<arraysize;i++)
+{
+    cin>>element;
+    a[i]=element;
+}
+int count=0;
+while(count < groups)
+{
+        for(int i=0;i<groups;i++)
+            {
+                int first;
+                int second;
+                int third;
+                cin>>first;
+                cin>>second;
+                cin>>third;
+
+                if(first == 1)
+                {
+                    for(int i=0;i<=(third-second);i++)
+                        {
+                            int temp;
+                            temp=a[third-1];
+                            for(int j=third-1;j>=0;j--)
+                            {
+                                a[j]=a[j-1];
+                            }
+                            a[0]=temp;
+                        }
+                }
+                if(first==2)
+                {
+                        for(int i=0; i<= (third-second); i++)
+                        {
+                            int temp,j;
+                            temp = a[second-1];
+                            for(int j=second-1; j<arraysize;j++)
+                                {
+                                    a[j] = a[j+1];
+                                }
+                            a[arraysize-1] = temp;
+                        }
+                }
+            count++;
+            }
+}
+cout<<abs(a[0]-a[arraysize-1])<<endl;
+for(int i=0;i<arraysize;i++)
+    {
+       cout<<a[i]<<" ";
+    }
+}
+
+
